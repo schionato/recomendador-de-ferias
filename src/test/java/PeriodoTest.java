@@ -6,7 +6,10 @@ public class PeriodoTest {
 
     @Test
     public void contaQuantidadeDeDiasUteis() {
-        Periodo periodo = new Periodo("01/01/2018", "30/01/2018");
+        Dia diaInicial = new Dia("01/01/2018");
+        Dia diaFinal = new Dia("30/01/2018");
+
+        Periodo periodo = new Periodo(diaInicial, diaFinal);
         assertEquals(22, periodo.getQuantidadeDeDiasUteis());
     }
 
