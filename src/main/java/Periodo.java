@@ -21,7 +21,9 @@ class Periodo {
     public long getQuantidadeDeDiasUteis() {
         List<LocalDate> todosOsDias = new ArrayList<>();
 
-        for (LocalDate dia = dataInicial; dia.isBefore(dataFinal); dia = dia.plusDays(1L)) {
+        for (LocalDate dia = dataInicial;
+             dia.isBefore(dataFinal) || dia.isEqual(dataFinal);
+             dia = dia.plusDays(1L)) {
             todosOsDias.add(dia);
         }
 
