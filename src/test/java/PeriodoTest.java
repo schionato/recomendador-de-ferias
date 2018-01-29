@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class PeriodoTest {
@@ -13,4 +15,14 @@ public class PeriodoTest {
         assertEquals(22, periodo.getQuantidadeDeDiasUteis());
     }
 
+    @Test
+    public void gerarSubPeriodos() {
+        Dia diaInicial = new Dia("01/01/2018");
+        Dia diaFinal = new Dia("30/01/2018");
+
+        Periodo periodo = new Periodo(diaInicial, diaFinal);
+        List<Periodo> periodos = periodo.gerarSubPeriodos(10);
+
+        assertEquals(15, periodos.size());
+    }
 }
