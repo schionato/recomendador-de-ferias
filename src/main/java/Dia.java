@@ -8,7 +8,7 @@ class Dia {
 
     private final LocalDate raw;
 
-    protected Dia(LocalDate raw) {
+    Dia(LocalDate raw) {
         this.raw = raw;
     }
 
@@ -18,7 +18,7 @@ class Dia {
 
     boolean ehUmDiaUtil() {
         int diaDaSemana = this.raw.getDayOfWeek().getValue();
-        return diaDaSemana != DayOfWeek.SUNDAY.getValue() && diaDaSemana != DayOfWeek.SATURDAY.getValue();
+        return !FinalDeSemana.contains(diaDaSemana);
     }
 
     boolean antes(Dia outroDia) {
