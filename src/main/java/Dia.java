@@ -28,6 +28,10 @@ class Dia {
         return raw.isEqual(outroDia.raw);
     }
 
+    int getDiaDoMes() {
+        return raw.getDayOfMonth();
+    }
+
     Amanha getAmanha() {
         return new Amanha(raw.plusDays(1L));
     }
