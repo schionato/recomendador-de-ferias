@@ -21,4 +21,19 @@ public class CalculadorDeFeriasTest {
         assertEquals(8, periodo.get(0).getQuantidadeDeDiasUteis());
         assertEquals(8, periodo.get(1).getQuantidadeDeDiasUteis());
     }
+
+    @Test
+    public void adicionaFinalDeSemanaNoPeriodo() {
+        Dia segundaFeira = new Dia("01/01/2018");
+        Dia outraSegunda = new Dia("08/01/2018");
+
+        Periodo periodoASerAnalisado = new Periodo(segundaFeira, outraSegunda);
+
+        List<Periodo> periodo = new CalculadorDeFerias(5, periodoASerAnalisado)
+                .calcula()
+                .getMelhoresPeriodos();
+
+        assertEquals(7, periodo.get(0).size());
+    }
+
 }

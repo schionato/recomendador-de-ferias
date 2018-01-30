@@ -24,15 +24,26 @@ class Periodo {
                 List<Dia> diasSubPeriodo = new ArrayList<>();
                 diasSubPeriodo.add(dia);
 
-                for (int x = 0; x < quantidadeDiasSubPeriodos -1; x++) {
-                    diasSubPeriodo.add(dias.get(i +1 + x));
+                for (int x = 1; x < quantidadeDiasSubPeriodos; x++) {
+                    diasSubPeriodo.add(dias.get(i + x));
                 }
+
+                verificaSeProximoDiaEhUtil(diasSubPeriodo);
 
                 subPeriodos.add(new Periodo(diasSubPeriodo));
             }
         }
 
         return subPeriodos;
+    }
+
+    private void verificaSeProximoDiaEhUtil(List<Dia> diasSubPeriodo) {
+        Dia ultimoDia = diasSubPeriodo.get(diasSubPeriodo.size() -1);
+
+        if (!ultimoDia.getAmanha().ehUmDiaUtil()) {
+            diasSubPeriodo.add(ultimoDia.getAmanha());
+            verificaSeProximoDiaEhUtil(diasSubPeriodo);
+        }
     }
 
     public long getQuantidadeDeDiasUteis() {

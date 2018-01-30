@@ -24,7 +24,6 @@ public class PeriodoTest {
         List<Periodo> periodos = periodo.gerarSubPeriodos(10);
 
         assertEquals(15, periodos.size());
-
-        periodos.stream().map(Periodo::size).forEach(size -> assertEquals(10, size, 0));
+        assertEquals(12, periodos.stream().mapToInt(Periodo::size).max().getAsInt());
     }
 }
