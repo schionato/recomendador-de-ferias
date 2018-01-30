@@ -5,18 +5,18 @@ import java.util.Map;
 
 class CalculadorDeFerias {
 
-    private final int diasSolicitados;
+    private final int quantidadeDiasSolicitados;
     private final Periodo periodoASerAnalisado;
     private final Map<Long, List<Ferias>> sugestoesDeFerias;
 
-    CalculadorDeFerias(int diasSolicitados, Periodo periodoASerAnalisado) {
-        this.diasSolicitados = diasSolicitados;
+    CalculadorDeFerias(int quantidadeDiasSolicitados, Periodo periodoASerAnalisado) {
+        this.quantidadeDiasSolicitados = quantidadeDiasSolicitados;
         this.periodoASerAnalisado = periodoASerAnalisado;
         this.sugestoesDeFerias = new HashMap<>();
     }
 
     CalculadorDeFerias calcula() {
-        List<Ferias> possiveisFerias = periodoASerAnalisado.gerarFerias(diasSolicitados);
+        List<Ferias> possiveisFerias = periodoASerAnalisado.gerarFerias(quantidadeDiasSolicitados);
 
         for (Ferias ferias : possiveisFerias) {
             long quantidadeDiasUteis = ferias.getQuantidadeDeDiasUteis();
