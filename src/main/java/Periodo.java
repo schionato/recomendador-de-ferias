@@ -5,7 +5,7 @@ class Periodo {
 
     private final List<Dia> dias;
 
-    public Periodo(List<Dia> dias) {
+    private Periodo(List<Dia> dias) {
         this.dias = new ArrayList<>(dias);
     }
 
@@ -23,8 +23,8 @@ class Periodo {
                 List<Dia> diasSubPeriodo = new ArrayList<>();
                 diasSubPeriodo.add(dia);
 
-                for (int x = i +1; x < quantidadeDiasSubPeriodos; x++) {
-                    diasSubPeriodo.add(dias.get(x));
+                for (int x = 0; x < quantidadeDiasSubPeriodos -1; x++) {
+                    diasSubPeriodo.add(dias.get(i +1 + x));
                 }
 
                 subPeriodos.add(new Periodo(diasSubPeriodo));
@@ -38,4 +38,7 @@ class Periodo {
         return dias.stream().filter(Dia::ehUmDiaUtil).count();
     }
 
+    public int size() {
+        return dias.size();
+    }
 }

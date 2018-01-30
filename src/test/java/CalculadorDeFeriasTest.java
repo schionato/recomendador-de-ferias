@@ -17,7 +17,7 @@ public class CalculadorDeFeriasTest {
                 .calcula()
                 .getMelhorPeriodo();
 
-        assertEquals(2, periodo.size());
+        assertEquals(10, periodo.size());
         assertEquals(8, periodo.get(0).getQuantidadeDeDiasUteis());
         assertEquals(8, periodo.get(1).getQuantidadeDeDiasUteis());
 
