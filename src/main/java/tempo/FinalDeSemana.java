@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 import java.util.Arrays;
 import java.util.List;
 
-public class FinalDeSemana {
+class FinalDeSemana {
 
     private static final List<Integer> DIAS_FINAL_DE_SEMANA = Arrays.asList(
             DayOfWeek.SUNDAY.getValue(),
