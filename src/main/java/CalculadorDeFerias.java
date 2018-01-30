@@ -35,8 +35,12 @@ class CalculadorDeFerias {
         return this;
     }
 
-    public List<Periodo> getMelhorPeriodo() {
-        long maiorPeriodo = this.periodos.keySet().stream().mapToLong(quantidade -> quantidade).max().getAsLong();
+    public List<Periodo> getMelhoresPeriodos() {
+        long maiorPeriodo = this.periodos.keySet()
+                .stream()
+                .mapToLong(quantidade -> quantidade)
+                .max()
+                .orElseThrow(RuntimeException::new);
         return this.periodos.get(maiorPeriodo);
     }
 }

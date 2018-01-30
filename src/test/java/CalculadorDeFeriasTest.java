@@ -15,12 +15,10 @@ public class CalculadorDeFeriasTest {
 
         List<Periodo> periodo = new CalculadorDeFerias(10, periodoASerAnalisado)
                 .calcula()
-                .getMelhorPeriodo();
+                .getMelhoresPeriodos();
 
         assertEquals(10, periodo.size());
         assertEquals(8, periodo.get(0).getQuantidadeDeDiasUteis());
         assertEquals(8, periodo.get(1).getQuantidadeDeDiasUteis());
-
-        Periodo periodo1 = periodo.get(0);
     }
 }

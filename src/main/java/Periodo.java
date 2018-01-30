@@ -13,6 +13,7 @@ class Periodo {
         this.dias = new GeradorDePeriodo(dataInicial, dataFinal).getDias();
     }
 
+    //FIXME nome esta errado
     List<Periodo> gerarSubPeriodos(int quantidadeDiasSubPeriodos) {
         List<Periodo> subPeriodos = new ArrayList<>();
 
