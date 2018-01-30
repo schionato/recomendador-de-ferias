@@ -13,7 +13,7 @@ public class CalculadorDeFeriasTest {
 
         Periodo periodoASerAnalisado = new Periodo(dataInicial, dataFinal);
 
-        List<Periodo> periodo = new CalculadorDeFerias(10, periodoASerAnalisado)
+        List<Ferias> periodo = new CalculadorDeFerias(10, periodoASerAnalisado)
                 .calcula()
                 .getMelhoresPeriodos();
 
@@ -29,11 +29,11 @@ public class CalculadorDeFeriasTest {
 
         Periodo periodoASerAnalisado = new Periodo(segundaFeira, outraSegunda);
 
-        List<Periodo> periodo = new CalculadorDeFerias(5, periodoASerAnalisado)
+        List<Ferias> ferias = new CalculadorDeFerias(5, periodoASerAnalisado)
                 .calcula()
                 .getMelhoresPeriodos();
 
-        assertEquals(7, periodo.get(0).size());
+        assertEquals(7, ferias.get(0).size());
     }
 
 }

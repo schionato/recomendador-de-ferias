@@ -21,9 +21,9 @@ public class PeriodoTest {
         Dia diaFinal = new Dia("30/01/2018");
 
         Periodo periodo = new Periodo(diaInicial, diaFinal);
-        List<Periodo> periodos = periodo.gerarSubPeriodos(10);
+        List<Ferias> periodos = periodo.gerarFerias(10);
 
         assertEquals(15, periodos.size());
-        assertEquals(12, periodos.stream().mapToInt(Periodo::size).max().getAsInt());
+        assertEquals(12, periodos.stream().mapToInt(Ferias::size).max().getAsInt());
     }
 }
