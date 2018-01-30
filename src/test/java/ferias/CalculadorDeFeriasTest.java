@@ -17,13 +17,13 @@ public class CalculadorDeFeriasTest {
 
         Periodo periodoASerAnalisado = new Periodo(dataInicial, dataFinal);
 
-        List<Ferias> periodo = new CalculadorDeFerias(10, periodoASerAnalisado)
+        List<Ferias> melhoresFerias = new CalculadorDeFerias(10, periodoASerAnalisado)
                 .calcula()
                 .getMelhoresPeriodos();
 
-        assertEquals(10, periodo.size());
-        assertEquals(8, periodo.get(0).getQuantidadeDeDiasUteis());
-        assertEquals(8, periodo.get(1).getQuantidadeDeDiasUteis());
+        assertEquals(3, melhoresFerias.size());
+
+        melhoresFerias.stream().mapToInt(Ferias::size).forEach(quantidadeDias -> assertEquals(12, quantidadeDias));
     }
 
     @Test

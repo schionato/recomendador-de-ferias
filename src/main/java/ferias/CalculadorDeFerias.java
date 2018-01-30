@@ -2,16 +2,17 @@ package ferias;
 
 import tempo.Periodo;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.stream.Collectors.groupingBy;
 
 class CalculadorDeFerias {
 
     private final int quantidadeDiasSolicitados;
     private final Periodo periodoASerAnalisado;
-    private final Map<Long, List<Ferias>> sugestoesDeFerias;
+    private final Map<Integer, List<Ferias>> sugestoesDeFerias;
 
     CalculadorDeFerias(int quantidadeDiasSolicitados, Periodo periodoASerAnalisado) {
         this.quantidadeDiasSolicitados = quantidadeDiasSolicitados;
@@ -20,29 +21,18 @@ class CalculadorDeFerias {
     }
 
     CalculadorDeFerias calcula() {
-        List<Ferias> possiveisFerias = periodoASerAnalisado.gerarFerias(quantidadeDiasSolicitados);
+        Map<Integer, List<Ferias>> sugestoes = periodoASerAnalisado.gerarFerias(quantidadeDiasSolicitados)
+                .stream()
+                .collect(groupingBy(Ferias::size));
 
-        for (Ferias ferias : possiveisFerias) {
-            long quantidadeDiasUteis = ferias.getQuantidadeDeDiasUteis();
-
-            this.sugestoesDeFerias.computeIfAbsent(quantidadeDiasUteis, quantidade -> {
-                List<Ferias> todasFerias = new ArrayList<>();
-                todasFerias.add(ferias);
-                return todasFerias;
-            });
-
-            this.sugestoesDeFerias.computeIfPresent(quantidadeDiasUteis, (quantidade, periodos) -> {
-                periodos.add(ferias);
-                return periodos;
-            });
-        }
+        this.sugestoesDeFerias.putAll(sugestoes);
         return this;
     }
 
     public List<Ferias> getMelhoresPeriodos() {
-        long maiorPeriodo = this.sugestoesDeFerias.keySet()
+        int maiorPeriodo = this.sugestoesDeFerias.keySet()
                 .stream()
-                .mapToLong(quantidade -> quantidade)
+                .mapToInt(quantidade -> quantidade)
                 .max()
                 .orElseThrow(RuntimeException::new);
         return this.sugestoesDeFerias.get(maiorPeriodo);
