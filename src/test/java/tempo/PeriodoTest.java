@@ -1,3 +1,6 @@
+package tempo;
+
+import ferias.Ferias;
 import org.junit.Test;
 
 import java.util.List;

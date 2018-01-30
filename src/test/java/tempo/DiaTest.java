@@ -1,3 +1,5 @@
+package tempo;
+
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;

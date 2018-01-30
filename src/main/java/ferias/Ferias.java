@@ -1,8 +1,13 @@
-class Ferias {
+package ferias;
+
+import tempo.Dia;
+import tempo.Periodo;
+
+public class Ferias {
 
     private final Periodo periodo;
 
-    Ferias(Periodo periodo) {
+    public Ferias(Periodo periodo) {
         this.periodo = periodo;
         verificaSeProximosDiasSaoDescansaveis();
     }
@@ -20,7 +25,7 @@ class Ferias {
         return periodo.getQuantidadeDeDiasUteis();
     }
 
-    int size() {
+    public int size() {
         return periodo.size();
     }
 }
