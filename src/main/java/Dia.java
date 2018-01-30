@@ -16,8 +16,11 @@ class Dia {
     }
 
     boolean ehUmDiaUtil() {
-        int diaDaSemana = this.raw.getDayOfWeek().getValue();
-        return !FinalDeSemana.contains(diaDaSemana);
+        return !FinalDeSemana.contains(this.raw.getDayOfWeek().getValue());
+    }
+
+    boolean ehFinalDeSemana() {
+        return FinalDeSemana.contains(this.raw.getDayOfWeek().getValue());
     }
 
     boolean antes(Dia outroDia) {

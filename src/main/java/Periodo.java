@@ -20,18 +20,20 @@ class Periodo {
         for (int i = 0; i < dias.size() - quantidadeDiasSubPeriodos; i++) {
             Dia dia = dias.get(i);
 
-            if (dia.ehUmDiaUtil()) {
-                List<Dia> diasSubPeriodo = new ArrayList<>();
-                diasSubPeriodo.add(dia);
-
-                for (int x = 1; x < quantidadeDiasSubPeriodos; x++) {
-                    diasSubPeriodo.add(dias.get(i + x));
-                }
-
-                verificaSeProximoDiaEhUtil(diasSubPeriodo);
-
-                subPeriodos.add(new Periodo(diasSubPeriodo));
+            if (dia.ehFinalDeSemana()) {
+                continue;
             }
+
+            List<Dia> diasSubPeriodo = new ArrayList<>();
+            diasSubPeriodo.add(dia);
+
+            for (int x = 1; x < quantidadeDiasSubPeriodos; x++) {
+                diasSubPeriodo.add(dias.get(i + x));
+            }
+
+            verificaSeProximoDiaEhUtil(diasSubPeriodo);
+
+            subPeriodos.add(new Periodo(diasSubPeriodo));
         }
 
         return subPeriodos;
@@ -40,7 +42,7 @@ class Periodo {
     private void verificaSeProximoDiaEhUtil(List<Dia> diasSubPeriodo) {
         Dia ultimoDia = diasSubPeriodo.get(diasSubPeriodo.size() -1);
 
-        if (!ultimoDia.getAmanha().ehUmDiaUtil()) {
+        if (ultimoDia.getAmanha().ehFinalDeSemana()) {
             diasSubPeriodo.add(ultimoDia.getAmanha());
             verificaSeProximoDiaEhUtil(diasSubPeriodo);
         }
