@@ -16,7 +16,7 @@ class CalculadorDeFerias {
                 .collect(groupingBy(Ferias::size));
     }
 
-    public List<Ferias> getMelhoresPeriodos() {
+    public List<Ferias> getMelhoresResultados() {
         int maiorPeriodo = this.sugestoesDeFerias.keySet()
                 .stream()
                 .mapToInt(quantidade -> quantidade)
