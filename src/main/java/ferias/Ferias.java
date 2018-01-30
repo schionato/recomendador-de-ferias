@@ -21,10 +21,6 @@ public class Ferias {
         }
     }
 
-    long getQuantidadeDeDiasUteis() {
-        return periodo.getQuantidadeDeDiasUteis();
-    }
-
     public int size() {
         return periodo.size();
     }
