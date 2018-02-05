@@ -1,7 +1,8 @@
-package ferias;
+package com.schionato.ferias;
 
-import tempo.Dia;
-import tempo.Periodo;
+import com.schionato.tempo.Dia;
+import com.schionato.tempo.Periodo;
+import com.schionato.tempo.PeriodoDto;
 
 public class Ferias {
 
@@ -23,5 +24,12 @@ public class Ferias {
 
     public int size() {
         return periodo.size();
+    }
+
+    public FeriasDto toDto() {
+        FeriasDto dto = new FeriasDto();
+        dto.setPeriodo(this.periodo.toDto());
+        dto.setQuantidadeDias(this.size());
+        return dto;
     }
 }

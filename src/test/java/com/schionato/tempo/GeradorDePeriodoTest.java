@@ -1,4 +1,4 @@
-package tempo;
+package com.schionato.tempo;
 
 import org.junit.Test;
 

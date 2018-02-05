@@ -1,6 +1,6 @@
-package tempo;
+package com.schionato.tempo;
 
-import ferias.Ferias;
+import com.schionato.ferias.Ferias;
 import org.junit.Test;
 
 import java.util.List;

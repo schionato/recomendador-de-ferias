@@ -1,4 +1,4 @@
-package tempo;
+package com.schionato.tempo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -39,5 +39,9 @@ public class Dia {
 
     public Amanha getAmanha() {
         return new Amanha(raw.plusDays(1L));
+    }
+
+    public String getAsString() {
+        return raw.format(FORMATTER);
     }
 }

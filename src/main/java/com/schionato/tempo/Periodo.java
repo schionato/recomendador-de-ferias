@@ -1,6 +1,6 @@
-package tempo;
+package com.schionato.tempo;
 
-import ferias.Ferias;
+import com.schionato.ferias.Ferias;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,21 @@ public class Periodo {
         return dias.get(dias.size() - 1);
     }
 
+    public Dia getPrimeiroDia() {
+        return dias.size() > 0 ? dias.get(0) : null;
+    }
+
     public void add(Dia dia) {
         this.dias.add(dia);
+    }
+
+    public PeriodoDto toDto() {
+        Dia primeiroDia = getPrimeiroDia();
+        Dia ultimoDia = getUltimoDia();
+
+        PeriodoDto dto = new PeriodoDto();
+        dto.setDataInicio(primeiroDia.getAsString());
+        dto.setDataFinal(ultimoDia.getAsString());
+        return dto;
     }
 }

@@ -1,4 +1,4 @@
-package tempo;
+package com.schionato.tempo;
 
 import java.time.DayOfWeek;
 import java.util.Arrays;

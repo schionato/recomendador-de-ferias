@@ -1,6 +1,6 @@
-package ferias;
+package com.schionato.ferias;
 
-import tempo.Periodo;
+import com.schionato.tempo.Periodo;
 
 import java.util.List;
 import java.util.Map;
