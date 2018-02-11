@@ -2,6 +2,10 @@ package com.schionato.tempo;
 
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
@@ -47,6 +51,16 @@ public class DiaTest {
     public void domingoEhUmDiaUtil() {
         Dia dominho = new Dia("28/01/2018");
         assertFalse(dominho.ehUmDiaUtil());
+    }
+
+    @Test
+    public void toData() throws ParseException {
+        Dia dia = new Dia("22/09/1987");
+
+        Date expected = new SimpleDateFormat("dd/MM/yyyy").parse("22/09/1987");
+
+        assertFalse(expected.after(dia.toData()));
+        assertFalse(expected.before(dia.toData()));
     }
 
     @Test
