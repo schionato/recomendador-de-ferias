@@ -1,7 +1,9 @@
 package com.schionato.tempo;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Dia {
 
@@ -43,5 +45,9 @@ public class Dia {
 
     public String getAsString() {
         return raw.format(FORMATTER);
+    }
+
+    public Date toData() {
+        return Date.from(raw.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }
