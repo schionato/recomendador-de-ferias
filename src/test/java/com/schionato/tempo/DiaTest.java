@@ -8,6 +8,7 @@ import java.util.Date;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 public class DiaTest {
 
@@ -61,6 +62,8 @@ public class DiaTest {
 
         assertFalse(expected.after(dia.toData()));
         assertFalse(expected.before(dia.toData()));
+
+        fail();
     }
 
     @Test
