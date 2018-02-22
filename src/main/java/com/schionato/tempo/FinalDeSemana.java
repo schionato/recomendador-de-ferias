@@ -11,14 +11,8 @@ public class FinalDeSemana implements DiaNaoTrabalhavel {
             DayOfWeek.SATURDAY.getValue()
     );
 
-    public FinalDeSemana() {}
-
-    static boolean contains(int dia) {
-        return DIAS_FINAL_DE_SEMANA.contains(dia);
-    }
-
     @Override
     public boolean eh(Dia dia) {
-        return contains(dia.getDiaDaSemana().getValue());
+        return DIAS_FINAL_DE_SEMANA.contains(dia.getDiaDaSemana().getValue());
     }
 }
