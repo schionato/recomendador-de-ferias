@@ -51,7 +51,7 @@ public class Periodo {
     }
 
     public Dia getPrimeiroDia() {
-        return dias.size() > 0 ? dias.get(0) : null;
+        return dias.isEmpty() ? null : dias.get(0);
     }
 
     public void add(Dia dia) {
