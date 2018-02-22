@@ -2,13 +2,14 @@ group 'com.github.schionato'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: "org.sonarqube"
+apply plugin: "jacoco"
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
-
 
 
 buildscript {
@@ -18,10 +19,23 @@ buildscript {
 
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
     }
-
 }
 
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.destination file("${buildDir}/coverage")
+    }
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: '**/*Dto.*')
+        })
+    }
+}
 
 dependencies {
     def springBootVersion = '1.5.9.RELEASE'
