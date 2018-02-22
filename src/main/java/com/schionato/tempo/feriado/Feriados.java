@@ -1,18 +1,19 @@
 package com.schionato.tempo.feriado;
 
 import com.schionato.tempo.Dia;
+import com.schionato.tempo.VerificadorDiaUtil;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
-public class Feriados {
+public class Feriados implements VerificadorDiaUtil {
 
     @PersistenceContext
     private EntityManager em;
 
-    public boolean contains(Dia dia) {
+    private boolean contains(Dia dia) {
         String hql = String.format("SELECT count(f) FROM %s f " +
                 "WHERE year(f.data) = year(:data) " +
                 "AND month(f.data) = month(:data) " +
@@ -24,4 +25,8 @@ public class Feriados {
                 .isEmpty();
     }
 
+    @Override
+    public boolean check(Dia dia) {
+        return contains(dia);
+    }
 }

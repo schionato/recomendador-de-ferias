@@ -1,9 +1,11 @@
 package com.schionato.tempo;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 public class Dia {
 
@@ -19,10 +21,16 @@ public class Dia {
         this.raw = LocalDate.parse(data, FORMATTER);
     }
 
-    boolean ehUmDiaUtil() {
-        return !FinalDeSemana.contains(this.raw.getDayOfWeek().getValue());
+    public DayOfWeek getDiaDaSemana() {
+        return this.raw.getDayOfWeek();
     }
 
+    //TODO rename para ehIncluso(List<DiaNaoTrabalhavel> diasNaoTrabalhaveis)
+    boolean ehUmDiaUtil(List<VerificadorDiaUtil> verificadores) {
+        return verificadores.stream().allMatch(verificador -> verificador.check(this));
+    }
+
+    //TODO mover para a nova estrutura
     public boolean ehFinalDeSemana() {
         return FinalDeSemana.contains(this.raw.getDayOfWeek().getValue());
     }
