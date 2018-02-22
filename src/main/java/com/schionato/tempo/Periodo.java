@@ -8,15 +8,15 @@ import java.util.List;
 public class Periodo {
 
     private final List<Dia> dias;
-    private final List<VerificadorDiaUtil> verificadorDiaUtils;
+    private final List<DiaNaoTrabalhavel> diasTrabalhaveis;
 
-    private Periodo(List<Dia> dias, List<VerificadorDiaUtil> verificadorDiaUtils) {
+    private Periodo(List<Dia> dias, List<DiaNaoTrabalhavel> diasTrabalhaveis) {
         this.dias = new ArrayList<>(dias);
-        this.verificadorDiaUtils = verificadorDiaUtils;
+        this.diasTrabalhaveis = diasTrabalhaveis;
     }
 
-    public Periodo(Dia dataInicial, Dia dataFinal, List<VerificadorDiaUtil> verificadorDiaUtils) {
-        this.verificadorDiaUtils = verificadorDiaUtils;
+    public Periodo(Dia dataInicial, Dia dataFinal, List<DiaNaoTrabalhavel> diasTrabalhaveis) {
+        this.diasTrabalhaveis = diasTrabalhaveis;
         this.dias = new GeradorDePeriodo(dataInicial, dataFinal).getDias();
     }
 
@@ -30,7 +30,7 @@ public class Periodo {
                 continue;
             }
 
-            Periodo periodo = new Periodo(dias.subList(i, i + quantidadeDias), verificadorDiaUtils);
+            Periodo periodo = new Periodo(dias.subList(i, i + quantidadeDias), diasTrabalhaveis);
 
             possiveisFerias.add(new Ferias(periodo));
         }
@@ -39,7 +39,7 @@ public class Periodo {
     }
 
     public long getQuantidadeDeDiasUteis() {
-        return dias.stream().filter(dia -> dia.ehUmDiaUtil(verificadorDiaUtils)).count();
+        return dias.stream().filter(dia -> !dia.estaInlcusoNos(diasTrabalhaveis)).count();
     }
 
     public int size() {

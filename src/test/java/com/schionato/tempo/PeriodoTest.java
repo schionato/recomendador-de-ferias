@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class PeriodoTest {
 
-    private VerificadorDiaUtil finalSemana;
+    private DiaNaoTrabalhavel finalSemana;
 
     @Before
     public void setUp() {

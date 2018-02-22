@@ -1,7 +1,7 @@
 package com.schionato.ferias;
 
 import com.schionato.tempo.FinalDeSemana;
-import com.schionato.tempo.VerificadorDiaUtil;
+import com.schionato.tempo.DiaNaoTrabalhavel;
 import org.junit.Before;
 import org.junit.Test;
 import com.schionato.tempo.Dia;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CalculadorDeFeriasTest {
 
-    private VerificadorDiaUtil finalSemana;
+    private DiaNaoTrabalhavel finalSemana;
 
     @Before
     public void setUp() {

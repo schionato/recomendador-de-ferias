@@ -25,9 +25,9 @@ public class Dia {
         return this.raw.getDayOfWeek();
     }
 
-    //TODO rename para ehIncluso(List<DiaNaoTrabalhavel> diasNaoTrabalhaveis)
-    boolean ehUmDiaUtil(List<VerificadorDiaUtil> verificadores) {
-        return verificadores.stream().allMatch(verificador -> verificador.check(this));
+
+    boolean estaInlcusoNos(List<DiaNaoTrabalhavel> diasNaoTrabalhaveis) {
+        return diasNaoTrabalhaveis.stream().anyMatch(diaNaoTrabalhavel -> diaNaoTrabalhavel.eh(this));
     }
 
     //TODO mover para a nova estrutura

@@ -5,14 +5,12 @@ import com.schionato.tempo.feriado.Feriados;
 import java.util.Arrays;
 import java.util.List;
 
-//TODO mudar para DiaNaoTrabalhavel
-public interface VerificadorDiaUtil {
+public interface DiaNaoTrabalhavel {
 
-    static List<VerificadorDiaUtil> getDefault() {
+    static List<DiaNaoTrabalhavel> getDefault() {
         return Arrays.asList(new FinalDeSemana(), new Feriados());
     }
 
-    //TODO mudar para eh(Dia dia)
-    boolean check(Dia dia);
+    boolean eh(Dia dia);
 
 }

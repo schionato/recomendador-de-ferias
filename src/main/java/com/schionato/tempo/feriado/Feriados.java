@@ -1,14 +1,14 @@
 package com.schionato.tempo.feriado;
 
 import com.schionato.tempo.Dia;
-import com.schionato.tempo.VerificadorDiaUtil;
+import com.schionato.tempo.DiaNaoTrabalhavel;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
-public class Feriados implements VerificadorDiaUtil {
+public class Feriados implements DiaNaoTrabalhavel {
 
     @PersistenceContext
     private EntityManager em;
@@ -26,7 +26,7 @@ public class Feriados implements VerificadorDiaUtil {
     }
 
     @Override
-    public boolean check(Dia dia) {
+    public boolean eh(Dia dia) {
         return contains(dia);
     }
 }

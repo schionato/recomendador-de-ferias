@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 import java.util.Arrays;
 import java.util.List;
 
-public class FinalDeSemana implements VerificadorDiaUtil {
+public class FinalDeSemana implements DiaNaoTrabalhavel {
 
     private static final List<Integer> DIAS_FINAL_DE_SEMANA = Arrays.asList(
             DayOfWeek.SUNDAY.getValue(),
@@ -18,7 +18,7 @@ public class FinalDeSemana implements VerificadorDiaUtil {
     }
 
     @Override
-    public boolean check(Dia dia) {
-        return !contains(dia.getDiaDaSemana().getValue());
+    public boolean eh(Dia dia) {
+        return contains(dia.getDiaDaSemana().getValue());
     }
 }
