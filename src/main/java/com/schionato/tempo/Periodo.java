@@ -16,6 +16,8 @@ public class Periodo {
     }
 
     public Periodo(Dia dataInicial, Dia dataFinal, List<DiaNaoTrabalhavel> diasNaoTrabalhaveis) {
+        new ValidadorPeriodo(dataInicial, dataFinal).verifica();
+
         this.diasNaoTrabalhaveis = diasNaoTrabalhaveis;
         this.dias = new GeradorDePeriodo(dataInicial, dataFinal).getDias();
     }
