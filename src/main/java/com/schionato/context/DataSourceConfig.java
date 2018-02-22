@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
-    private final Integer MAX_CONNECTIONS = 20;
+    private static final Integer MAX_CONNECTIONS = 20;
 
     @Value("${spring.datasource.url}")
     private String url;
