@@ -4,6 +4,8 @@ import com.schionato.ferias.Ferias;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Collections.singletonList;
@@ -11,11 +13,11 @@ import static org.junit.Assert.assertEquals;
 
 public class PeriodoTest {
 
-    private DiaNaoTrabalhavel finalSemana;
+    private List<DiaNaoTrabalhavel> diasNaoTrabalhaveis;
 
     @Before
     public void setUp() {
-        finalSemana = new FinalDeSemana();
+        diasNaoTrabalhaveis = Collections.singletonList(new FinalDeSemana());
     }
 
     @Test
@@ -23,7 +25,7 @@ public class PeriodoTest {
         Dia diaInicial = new Dia("01/01/2018");
         Dia diaFinal = new Dia("30/01/2018");
 
-        Periodo periodo = new Periodo(diaInicial, diaFinal, singletonList(finalSemana));
+        Periodo periodo = new Periodo(diaInicial, diaFinal, diasNaoTrabalhaveis);
         assertEquals(22, periodo.getQuantidadeDeDiasUteis());
     }
 
@@ -32,7 +34,7 @@ public class PeriodoTest {
         Dia diaInicial = new Dia("01/01/2018");
         Dia diaFinal = new Dia("30/01/2018");
 
-        Periodo periodo = new Periodo(diaInicial, diaFinal, singletonList(finalSemana));
+        Periodo periodo = new Periodo(diaInicial, diaFinal, diasNaoTrabalhaveis);
         List<Ferias> periodos = periodo.gerarFerias(10);
 
         assertEquals(15, periodos.size());

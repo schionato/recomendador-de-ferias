@@ -8,15 +8,15 @@ import java.util.List;
 public class Periodo {
 
     private final List<Dia> dias;
-    private final List<DiaNaoTrabalhavel> diasTrabalhaveis;
+    private final List<DiaNaoTrabalhavel> diasNaoTrabalhaveis;
 
-    private Periodo(List<Dia> dias, List<DiaNaoTrabalhavel> diasTrabalhaveis) {
+    private Periodo(List<Dia> dias, List<DiaNaoTrabalhavel> diasNaoTrabalhaveis) {
         this.dias = new ArrayList<>(dias);
-        this.diasTrabalhaveis = diasTrabalhaveis;
+        this.diasNaoTrabalhaveis = diasNaoTrabalhaveis;
     }
 
-    public Periodo(Dia dataInicial, Dia dataFinal, List<DiaNaoTrabalhavel> diasTrabalhaveis) {
-        this.diasTrabalhaveis = diasTrabalhaveis;
+    public Periodo(Dia dataInicial, Dia dataFinal, List<DiaNaoTrabalhavel> diasNaoTrabalhaveis) {
+        this.diasNaoTrabalhaveis = diasNaoTrabalhaveis;
         this.dias = new GeradorDePeriodo(dataInicial, dataFinal).getDias();
     }
 
@@ -26,20 +26,20 @@ public class Periodo {
         for (int i = 0; i < dias.size() - quantidadeDias; i++) {
             Dia dia = dias.get(i);
 
-            if (dia.estaInlcusoNos(diasTrabalhaveis)) {
+            if (dia.estaInlcusoNos(diasNaoTrabalhaveis)) {
                 continue;
             }
 
-            Periodo periodo = new Periodo(dias.subList(i, i + quantidadeDias), diasTrabalhaveis);
+            Periodo periodo = new Periodo(dias.subList(i, i + quantidadeDias), diasNaoTrabalhaveis);
 
-            possiveisFerias.add(new Ferias(periodo, diasTrabalhaveis));
+            possiveisFerias.add(new Ferias(periodo, diasNaoTrabalhaveis));
         }
 
         return possiveisFerias;
     }
 
     public long getQuantidadeDeDiasUteis() {
-        return dias.stream().filter(dia -> !dia.estaInlcusoNos(diasTrabalhaveis)).count();
+        return dias.stream().filter(dia -> !dia.estaInlcusoNos(diasNaoTrabalhaveis)).count();
     }
 
     public int size() {

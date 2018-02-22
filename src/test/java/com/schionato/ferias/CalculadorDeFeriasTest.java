@@ -7,18 +7,18 @@ import org.junit.Test;
 import com.schionato.tempo.Dia;
 import com.schionato.tempo.Periodo;
 
+import java.util.Collections;
 import java.util.List;
 
-import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
 
 public class CalculadorDeFeriasTest {
 
-    private DiaNaoTrabalhavel finalSemana;
+    private List<DiaNaoTrabalhavel> diasNaoTrabalhaveis;
 
     @Before
     public void setUp() {
-        finalSemana = new FinalDeSemana();
+        diasNaoTrabalhaveis = Collections.singletonList(new FinalDeSemana());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class CalculadorDeFeriasTest {
         Dia dataInicial = new Dia("01/01/2018");
         Dia dataFinal = new Dia("31/01/2018");
 
-        Periodo periodoASerAnalisado = new Periodo(dataInicial, dataFinal, singletonList(finalSemana));
+        Periodo periodoASerAnalisado = new Periodo(dataInicial, dataFinal, diasNaoTrabalhaveis);
 
         List<Ferias> melhoresFerias = new CalculadorDeFerias(10, periodoASerAnalisado).getMelhoresResultados();
 
@@ -40,7 +40,7 @@ public class CalculadorDeFeriasTest {
         Dia segundaFeira = new Dia("01/01/2018");
         Dia outraSegunda = new Dia("08/01/2018");
 
-        Periodo periodoASerAnalisado = new Periodo(segundaFeira, outraSegunda, singletonList(finalSemana));
+        Periodo periodoASerAnalisado = new Periodo(segundaFeira, outraSegunda, diasNaoTrabalhaveis);
 
         List<Ferias> ferias = new CalculadorDeFerias(5, periodoASerAnalisado).getMelhoresResultados();
 

@@ -11,8 +11,9 @@ import java.util.List;
 class AnalisadorDeFeriasService {
 
     List<Ferias> analise(Dia dataInicio, Dia dataFinal, int quantidadeDias) {
-        List<DiaNaoTrabalhavel> verificadoresDefault = DiaNaoTrabalhavel.getDefault();
-        Periodo periodo = new Periodo(dataInicio, dataFinal, verificadoresDefault);
+        List<DiaNaoTrabalhavel> diasNaoTrabalhaveis = DiaNaoTrabalhavel.getDefault();
+        Periodo periodo = new Periodo(dataInicio, dataFinal, diasNaoTrabalhaveis);
+
         return new CalculadorDeFerias(quantidadeDias, periodo).getMelhoresResultados();
     }
 
