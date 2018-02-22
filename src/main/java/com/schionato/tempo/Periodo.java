@@ -26,13 +26,13 @@ public class Periodo {
         for (int i = 0; i < dias.size() - quantidadeDias; i++) {
             Dia dia = dias.get(i);
 
-            if (dia.ehFinalDeSemana()) {
+            if (dia.estaInlcusoNos(diasTrabalhaveis)) {
                 continue;
             }
 
             Periodo periodo = new Periodo(dias.subList(i, i + quantidadeDias), diasTrabalhaveis);
 
-            possiveisFerias.add(new Ferias(periodo));
+            possiveisFerias.add(new Ferias(periodo, diasTrabalhaveis));
         }
 
         return possiveisFerias;

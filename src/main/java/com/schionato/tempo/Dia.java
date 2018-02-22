@@ -26,13 +26,8 @@ public class Dia {
     }
 
 
-    boolean estaInlcusoNos(List<DiaNaoTrabalhavel> diasNaoTrabalhaveis) {
+    public boolean estaInlcusoNos(List<DiaNaoTrabalhavel> diasNaoTrabalhaveis) {
         return diasNaoTrabalhaveis.stream().anyMatch(diaNaoTrabalhavel -> diaNaoTrabalhavel.eh(this));
-    }
-
-    //TODO mover para a nova estrutura
-    public boolean ehFinalDeSemana() {
-        return FinalDeSemana.contains(this.raw.getDayOfWeek().getValue());
     }
 
     boolean antes(Dia outroDia) {
