@@ -57,6 +57,7 @@ dependencies {
     }
 
     compile "com.h2database:h2:1.4.196"
+    compile "com.zaxxer:HikariCP:2.7.4"
 
     testCompile 'junit:junit:4.12'
 
