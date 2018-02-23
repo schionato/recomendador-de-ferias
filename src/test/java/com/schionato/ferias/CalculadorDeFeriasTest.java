@@ -23,8 +23,8 @@ public class CalculadorDeFeriasTest {
 
     @Test
     public void verificaMelhorPeriodo() {
-        Dia dataInicial = new Dia("01/01/2018");
-        Dia dataFinal = new Dia("31/01/2018");
+        Dia dataInicial = new Dia("01/01/9999");
+        Dia dataFinal = new Dia("31/01/9999");
 
         Periodo periodoASerAnalisado = new Periodo(dataInicial, dataFinal, diasNaoTrabalhaveis);
 
@@ -37,8 +37,8 @@ public class CalculadorDeFeriasTest {
 
     @Test
     public void adicionaFinalDeSemanaNoPeriodo() {
-        Dia segundaFeira = new Dia("01/01/2018");
-        Dia outraSegunda = new Dia("08/01/2018");
+        Dia segundaFeira = new Dia("04/01/9999");
+        Dia outraSegunda = new Dia("11/01/9999");
 
         Periodo periodoASerAnalisado = new Periodo(segundaFeira, outraSegunda, diasNaoTrabalhaveis);
 

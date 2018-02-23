@@ -24,22 +24,22 @@ public class PeriodoTest {
 
     @Test
     public void contaQuantidadeDeDiasUteis() {
-        Dia diaInicial = new Dia("01/01/2018");
-        Dia diaFinal = new Dia("30/01/2018");
+        Dia diaInicial = new Dia("01/01/9999");
+        Dia diaFinal = new Dia("30/01/9999");
 
         Periodo periodo = new Periodo(diaInicial, diaFinal, diasNaoTrabalhaveis);
-        assertEquals(22, periodo.getQuantidadeDeDiasUteis());
+        assertEquals(21, periodo.getQuantidadeDeDiasUteis());
     }
 
     @Test
     public void gerarSubPeriodos() {
-        Dia diaInicial = new Dia("01/01/2018");
-        Dia diaFinal = new Dia("30/01/2018");
+        Dia diaInicial = new Dia("01/01/9999");
+        Dia diaFinal = new Dia("30/01/9999");
 
         Periodo periodo = new Periodo(diaInicial, diaFinal, diasNaoTrabalhaveis);
         List<Ferias> periodos = periodo.gerarFerias(10);
 
-        assertEquals(15, periodos.size());
+        assertEquals(14, periodos.size());
         assertEquals(12, periodos.stream().mapToInt(Ferias::size).max().getAsInt());
     }
 }
