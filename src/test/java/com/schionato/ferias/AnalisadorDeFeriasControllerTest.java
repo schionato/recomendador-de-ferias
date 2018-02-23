@@ -31,7 +31,19 @@ public class AnalisadorDeFeriasControllerTest extends HttpIntegrationTest {
                 "data-fim=01/12/9999&" +
                 "quantidade=3", String.class);
 
-        String expectedMessage = "{messsage: A data final tem que ser maior que data inicial}";
+        String expectedMessage = "{\"message\":\"A data final tem que ser maior que data inicial\"}";
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals(expectedMessage, response.getBody());
+    }
+
+    @Test
+    public void getAnalisesSemPassarDataInicio() {
+        ResponseEntity<?> response = super.get("/api/v1/analises?"+
+                "data-fim=01/12/9999&" +
+                "quantidade=3", String.class);
+
+        String expectedMessage = "{\"message\":\"Required String parameter 'data-inicio' is not present\"}";
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals(expectedMessage, response.getBody());
