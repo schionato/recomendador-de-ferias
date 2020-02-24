@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity(name = "FERIADO")
-class Feriado {
+public class Feriado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

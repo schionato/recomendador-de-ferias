@@ -1,9 +1,12 @@
 package com.schionato.tempo;
 
+import org.springframework.stereotype.Component;
+
 import java.time.DayOfWeek;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class FinalDeSemana implements DiaNaoTrabalhavel {
 
     private static final List<Integer> DIAS_FINAL_DE_SEMANA = Arrays.asList(
