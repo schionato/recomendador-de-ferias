@@ -1,25 +1,16 @@
 package com.schionato.ferias;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.schionato.tempo.PeriodoDto;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class FeriasDto {
 
-    private PeriodoDto periodo;
-    private int quantidadeDias;
+    @JsonInclude
+    PeriodoDto periodo;
 
-    public PeriodoDto getPeriodo() {
-        return periodo;
-    }
+    @JsonInclude
+    int quantidadeDias;
 
-    public void setPeriodo(PeriodoDto periodo) {
-        this.periodo = periodo;
-    }
-
-    public int getQuantidadeDias() {
-        return quantidadeDias;
-    }
-
-    public void setQuantidadeDias(int quantidadeDias) {
-        this.quantidadeDias = quantidadeDias;
-    }
 }

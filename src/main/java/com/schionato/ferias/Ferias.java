@@ -32,8 +32,8 @@ public class Ferias {
 
     public FeriasDto toDto() {
         FeriasDto dto = new FeriasDto();
-        dto.setPeriodo(this.periodo.toDto());
-        dto.setQuantidadeDias(this.size());
+        dto.periodo = this.periodo.toDto();
+        dto.quantidadeDias = this.size();
         return dto;
     }
 }

@@ -13,14 +13,16 @@ import java.util.List;
 @Service
 class AnalisadorDeFeriasService {
 
-    private Feriados feriados;
+    private final Feriados feriados;
+    private final FinalDeSemana finaisDeSemana;
 
-    public AnalisadorDeFeriasService(Feriados feriados) {
+    public AnalisadorDeFeriasService(Feriados feriados, FinalDeSemana finaisDeSemana) {
         this.feriados = feriados;
+        this.finaisDeSemana = finaisDeSemana;
     }
 
     List<Ferias> analise(Dia dataInicio, Dia dataFinal, int quantidadeDias) {
-        List<DiaNaoTrabalhavel> diasNaoTrabalhaveis = Arrays.asList(feriados, new FinalDeSemana());
+        List<DiaNaoTrabalhavel> diasNaoTrabalhaveis = Arrays.asList(feriados, finaisDeSemana);
         Periodo periodo = new Periodo(dataInicio, dataFinal, diasNaoTrabalhaveis);
 
         return new CalculadorDeFerias(quantidadeDias, periodo).getMelhoresResultados();

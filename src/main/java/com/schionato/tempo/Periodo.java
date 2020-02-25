@@ -65,8 +65,8 @@ public class Periodo {
         Dia ultimoDia = getUltimoDia();
 
         PeriodoDto dto = new PeriodoDto();
-        dto.setDataInicio(primeiroDia.getAsString());
-        dto.setDataFinal(ultimoDia.getAsString());
+        dto.dataInicio = primeiroDia.getAsString();
+        dto.dataFinal = ultimoDia.getAsString();
         return dto;
     }
 }

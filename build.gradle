@@ -5,8 +5,10 @@ apply plugin: 'java'
 apply plugin: "org.sonarqube"
 apply plugin: "jacoco"
 apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.11
 
 repositories {
     mavenCentral()
@@ -19,7 +21,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.4.RELEASE"
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2"
     }
@@ -33,9 +35,9 @@ jacocoTestReport {
         html.destination file("${buildDir}/coverage")
     }
     afterEvaluate {
-        classDirectories = files(classDirectories.files.collect {
+        getClassDirectories().setFrom(files(classDirectories.files.collect {
             fileTree(dir: it, exclude: ['**/*Dto.*', '**/*Mock.*', '**/*App.*'])
-        })
+        }))
     }
 }
 
@@ -46,24 +48,20 @@ sonarqube {
 }
 
 dependencies {
-    def springBootVersion = '1.5.9.RELEASE'
+    def springBootVersion = '2.2.4.RELEASE'
 
     compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-undertow:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    compile "com.h2database:h2:1.4.199"
 
-    compile ("org.springframework.boot:spring-boot-starter-undertow:${springBootVersion}"){
-        exclude group: 'io.undertow', module: 'undertow-websockets-jsr'
-    }
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
 
-    compile ("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"){
-        exclude module: 'tomcat-jdbc'
-    }
-
-    compile "com.h2database:h2:1.4.196"
-    compile "com.zaxxer:HikariCP:2.7.4"
 
     testCompile 'junit:junit:4.12'
-
-    testCompile ("org.springframework.boot:spring-boot-starter-test:${springBootVersion}") {
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}") {
         exclude module: 'junit:junit'
     }
 }

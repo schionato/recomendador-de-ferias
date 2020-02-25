@@ -5,8 +5,6 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 
 public class AnalisadorDeFeriasControllerTest extends HttpIntegrationTest {
@@ -16,11 +14,11 @@ public class AnalisadorDeFeriasControllerTest extends HttpIntegrationTest {
         ResponseEntity<?> response = super.get("/api/v1/analises?" +
                 "data-inicio=01/12/9999&" +
                 "data-fim=10/12/9999&" +
-                "quantidade=3", List.class);
+                "quantidade=3", String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
-        String expected = "[{periodo={dataInicio=01/12/9999, dataFinal=05/12/9999}, quantidadeDias=5}]";
+        String expected = "[{\"periodo\":{\"dataInicio\":\"01/12/9999\",\"dataFinal\":\"05/12/9999\"},\"quantidadeDias\":5}]";
         assertEquals(expected, response.getBody().toString());
     }
 
