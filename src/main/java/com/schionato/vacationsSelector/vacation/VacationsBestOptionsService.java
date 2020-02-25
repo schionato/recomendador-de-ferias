@@ -13,17 +13,17 @@ import java.util.List;
 class VacationsBestOptionsService {
 
     private final Holidays holidays;
-    private final Weekends finaisDeSemana;
+    private final Weekends weekends;
 
-    public VacationsBestOptionsService(Holidays holidays, Weekends finaisDeSemana) {
+    public VacationsBestOptionsService(Holidays holidays, Weekends weekends) {
         this.holidays = holidays;
-        this.finaisDeSemana = finaisDeSemana;
+        this.weekends = weekends;
     }
 
-    List<Vacation> findOptions(Day dataInicio, Day dataFinal, int quantidadeDias) {
-        var diasNaoTrabalhaveis = Arrays.asList(holidays, finaisDeSemana);
-        var periodo = new Period(dataInicio, dataFinal, diasNaoTrabalhaveis);
-        return new BestVacationsPeriodsSelector(quantidadeDias, periodo).getBestResults();
+    List<Vacation> findOptions(Day startDate, Day endDate, int daysOff) {
+        var allDefaultDaysOff = Arrays.asList(holidays, weekends);
+        var period = new Period(startDate, endDate, allDefaultDaysOff);
+        return new BestVacationsPeriodsSelector(daysOff, period).getBestResults();
     }
 
 }
