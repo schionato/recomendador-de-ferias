@@ -1,7 +1,7 @@
 package com.schionato.configuracao;
 
 
-import com.schionato.App;
+import com.schionato.vacationsSelector.App;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

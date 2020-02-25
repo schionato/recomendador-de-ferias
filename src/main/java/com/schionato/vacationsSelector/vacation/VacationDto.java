@@ -1,16 +1,16 @@
-package com.schionato.ferias;
+package com.schionato.vacationsSelector.vacation;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.schionato.tempo.PeriodoDto;
+import com.schionato.vacationsSelector.date.PeriodDto;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class FeriasDto {
+public class VacationDto {
 
     @JsonInclude
-    PeriodoDto periodo;
+    PeriodDto period;
 
     @JsonInclude
-    int quantidadeDias;
+    int daysOff;
 
 }

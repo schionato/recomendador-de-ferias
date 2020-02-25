@@ -1,12 +1,9 @@
-package com.schionato.tempo;
+package com.schionato.vacationsSelector.date;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class PeriodoDto {
-
-    String dataInicio;
-
-    String dataFinal;
-
+public class PeriodDto {
+    String startDate;
+    String endDate;
 }

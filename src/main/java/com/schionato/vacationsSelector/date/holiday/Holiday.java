@@ -1,4 +1,4 @@
-package com.schionato.tempo.feriado;
+package com.schionato.vacationsSelector.date.holiday;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Feriado {
+public class Holiday {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,9 +17,9 @@ public class Feriado {
     @Column(nullable = false)
     private Date date;
 
-    private Feriado() {} //JPA compatibility
+    private Holiday() {} //JPA compatibility
 
-    public Feriado(Date date) {
+    public Holiday(Date date) {
         this.date = date;
     }
 }

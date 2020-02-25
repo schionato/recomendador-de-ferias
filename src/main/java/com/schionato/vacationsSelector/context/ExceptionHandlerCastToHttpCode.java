@@ -1,4 +1,4 @@
-package com.schionato.context;
+package com.schionato.vacationsSelector.context;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import org.springframework.http.HttpHeaders;
