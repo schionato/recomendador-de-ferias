@@ -2,16 +2,18 @@ package com.schionato.ferias;
 
 import com.schionato.tempo.Dia;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController(value = "/api/v1/analises")
+@RestController
+@RequestMapping("/api/v1/analises")
 public class AnalisadorDeFeriasController {
 
-    private AnalisadorDeFeriasService service;
+    private final AnalisadorDeFeriasService service;
 
     public AnalisadorDeFeriasController(AnalisadorDeFeriasService service) {
         this.service = service;

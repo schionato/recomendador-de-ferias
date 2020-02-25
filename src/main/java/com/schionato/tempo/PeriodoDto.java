@@ -1,23 +1,12 @@
 package com.schionato.tempo;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class PeriodoDto {
 
-    private String dataInicio;
-    private String dataFinal;
+    String dataInicio;
 
-    public String getDataInicio() {
-        return dataInicio;
-    }
+    String dataFinal;
 
-    public void setDataInicio(String dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
-    public String getDataFinal() {
-        return dataFinal;
-    }
-
-    public void setDataFinal(String dataFinal) {
-        this.dataFinal = dataFinal;
-    }
 }

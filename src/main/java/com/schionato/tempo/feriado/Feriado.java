@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Entity(name = "FERIADO")
+@Entity
 public class Feriado {
 
     @Id
