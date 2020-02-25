@@ -1,4 +1,4 @@
-package com.schionato.configuracao;
+package com.schionato.configuration;
 
 
 import com.schionato.vacationsSelector.App;

@@ -1,4 +1,6 @@
-package com.schionato.vacationsSelector.date;
+package com.schionato.vacationsSelector.period;
+
+import com.schionato.vacationsSelector.date.Day;
 
 import java.util.ArrayList;
 import java.util.List;

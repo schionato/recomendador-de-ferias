@@ -2,7 +2,7 @@ package com.schionato.vacationsSelector.vacation;
 
 import com.schionato.vacationsSelector.date.Day;
 import com.schionato.vacationsSelector.date.DayOffByDefault;
-import com.schionato.vacationsSelector.date.Period;
+import com.schionato.vacationsSelector.period.Period;
 
 import java.util.List;
 

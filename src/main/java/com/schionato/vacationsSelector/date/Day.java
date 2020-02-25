@@ -13,7 +13,7 @@ public class Day {
 
     private final LocalDate raw;
 
-    Day(LocalDate raw) {
+    public Day(LocalDate raw) {
         this.raw = raw;
     }
 
@@ -29,19 +29,19 @@ public class Day {
         return daysOffByDefault.stream().anyMatch(dayOff -> dayOff.in(this));
     }
 
-    boolean isBefore(Day other) {
+    public boolean isBefore(Day other) {
         return raw.isBefore(other.raw);
     }
 
-    boolean isBeforeThanToday() {
+    public boolean isBeforeThanToday() {
         return raw.isBefore(LocalDate.now());
     }
 
-    boolean isEqual(Day other) {
+    public boolean isEqual(Day other) {
         return raw.isEqual(other.raw);
     }
 
-    int getDayOfMonth() {
+    public int getDayOfMonth() {
         return raw.getDayOfMonth();
     }
 

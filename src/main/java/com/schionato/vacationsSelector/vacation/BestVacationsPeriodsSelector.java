@@ -1,6 +1,6 @@
 package com.schionato.vacationsSelector.vacation;
 
-import com.schionato.vacationsSelector.date.Period;
+import com.schionato.vacationsSelector.period.Period;
 
 import java.util.List;
 import java.util.Map;

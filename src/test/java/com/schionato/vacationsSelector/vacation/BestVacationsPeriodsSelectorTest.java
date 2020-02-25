@@ -5,7 +5,7 @@ import com.schionato.vacationsSelector.date.DayOffByDefault;
 import org.junit.Before;
 import org.junit.Test;
 import com.schionato.vacationsSelector.date.Day;
-import com.schionato.vacationsSelector.date.Period;
+import com.schionato.vacationsSelector.period.Period;
 
 import java.util.Collections;
 import java.util.List;

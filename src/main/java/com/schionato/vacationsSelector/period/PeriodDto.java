@@ -1,4 +1,4 @@
-package com.schionato.vacationsSelector.date;
+package com.schionato.vacationsSelector.period;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 

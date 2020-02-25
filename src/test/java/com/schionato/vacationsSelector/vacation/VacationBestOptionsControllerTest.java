@@ -1,6 +1,6 @@
 package com.schionato.vacationsSelector.vacation;
 
-import com.schionato.configuracao.HttpIntegrationTest;
+import com.schionato.configuration.HttpIntegrationTest;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

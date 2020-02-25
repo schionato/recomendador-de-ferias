@@ -1,5 +1,7 @@
-package com.schionato.vacationsSelector.date;
+package com.schionato.vacationsSelector.period;
 
+import com.schionato.vacationsSelector.date.Day;
+import com.schionato.vacationsSelector.period.PeriodValidator;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
