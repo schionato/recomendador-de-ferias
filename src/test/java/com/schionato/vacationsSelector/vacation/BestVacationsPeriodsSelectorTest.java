@@ -14,37 +14,37 @@ import static org.junit.Assert.assertEquals;
 
 public class BestVacationsPeriodsSelectorTest {
 
-    private List<DayOffByDefault> diasNaoTrabalhaveis;
+    private List<DayOffByDefault> daysOff;
 
     @Before
     public void setUp() {
-        diasNaoTrabalhaveis = Collections.singletonList(new Weekends());
+        daysOff = Collections.singletonList(new Weekends());
     }
 
     @Test
-    public void verificaMelhorPeriodo() {
-        Day dataInicial = new Day("01/01/9999");
-        Day dataFinal = new Day("31/01/9999");
+    public void findBestPeriod() {
+        Day startDate = new Day("01/01/9999");
+        Day endDate = new Day("31/01/9999");
 
-        Period periodASerAnalisado = new Period(dataInicial, dataFinal, diasNaoTrabalhaveis);
+        Period period = new Period(startDate, endDate, daysOff);
 
-        List<Vacation> melhoresFerias = new BestVacationsPeriodsSelector(10, periodASerAnalisado).getBestResults();
+        List<Vacation> bestResults = new BestVacationsPeriodsSelector(10, period).getBestResults();
 
-        assertEquals(3, melhoresFerias.size());
+        assertEquals(3, bestResults.size());
 
-        melhoresFerias.stream().mapToInt(Vacation::size).forEach(quantidadeDias -> assertEquals(12, quantidadeDias));
+        bestResults.stream().mapToInt(Vacation::size).forEach(daysOff -> assertEquals(12, daysOff));
     }
 
     @Test
-    public void adicionaFinalDeSemanaNoPeriodo() {
-        Day segundaFeira = new Day("04/01/9999");
-        Day outraSegunda = new Day("11/01/9999");
+    public void addWeekends() {
+        Day monday = new Day("04/01/9999");
+        Day otherMonday = new Day("11/01/9999");
 
-        Period periodASerAnalisado = new Period(segundaFeira, outraSegunda, diasNaoTrabalhaveis);
+        Period period = new Period(monday, otherMonday, daysOff);
 
-        List<Vacation> ferias = new BestVacationsPeriodsSelector(5, periodASerAnalisado).getBestResults();
+        List<Vacation> bestResults = new BestVacationsPeriodsSelector(5, period).getBestResults();
 
-        assertEquals(7, ferias.get(0).size());
+        assertEquals(7, bestResults.get(0).size());
     }
 
 }

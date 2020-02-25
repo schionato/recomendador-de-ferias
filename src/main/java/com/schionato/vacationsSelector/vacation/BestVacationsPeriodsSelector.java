@@ -11,8 +11,8 @@ class BestVacationsPeriodsSelector {
 
     private final Map<Integer, List<Vacation>> allVacationsPeriodsGroupedByDaysOff;
 
-    BestVacationsPeriodsSelector(int quantidadeDiasSolicitados, Period periodASerAnalisado) {
-        this.allVacationsPeriodsGroupedByDaysOff = periodASerAnalisado.generate(quantidadeDiasSolicitados).stream()
+    BestVacationsPeriodsSelector(int daysOff, Period period) {
+        this.allVacationsPeriodsGroupedByDaysOff = period.generate(daysOff).stream()
                 .collect(groupingBy(Vacation::size));
     }
 
